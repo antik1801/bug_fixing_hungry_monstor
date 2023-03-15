@@ -2,7 +2,7 @@
 //------------- handle search button-----------
 const searchFood = () => {
     const searchField = document.getElementById('mealInput'); 
-    const searchData = searchField.value 
+    const searchData = searchField.value ;
     if (searchData) {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchData}`;
         fetch(url)
@@ -41,7 +41,7 @@ const displayMealInfo = mealData => {
 
 const mealIngredientsInfo = mealItemName => { 
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItemName}`;
-fetch(url)
+        fetch(url)
         .then(response => response.json())
         .then(data => displayDetails(data))
 }
@@ -50,10 +50,10 @@ fetch(url)
 
 const displayDetails = mealItemDetails => {
     const mealItemsInformation = document.getElementById('mealItemsInfo');
-    mealItemDetails.forEach(items => {
-        const mealItemsInformations = document.innerHTML('div');
+    console.log(mealItemDetails);
+    mealItemDetails?.meals?.forEach(items => {
+        const mealItemsInformations = document.createElement('div');
         mealItemsInformations.className = 'ingredients-info';
-        console.log(items.strMeal);
         const itemsName = document.createElement('h1');
         const ingredients = document.createElement('h5');
         ingredients.innerText = 'Ingredients';
